@@ -53,7 +53,8 @@
 <% @lecture.comments.each do |comment| %>
   
   <p>
-    <strong>Comment:</strong>
+    <strong> <%= comment.created_at %></strong>
+   
     <%= comment.content %>
   </p>
 <% end %>
