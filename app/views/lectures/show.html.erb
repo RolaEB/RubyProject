@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @lecture.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= raw(@lecture.content) %>
+</p>
+
+<p>
+  <strong>Attachment:</strong>
+  <%= link_to "Download Attachment", @lecture.attachment_url if @lecture.attachment? %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @lecture.course_id %>
+</p>
+
+<%= link_to 'Edit', edit_lecture_path(@lecture) %> |
+<%= link_to 'Back', lectures_path %>
