@@ -11,6 +11,7 @@ class User < ApplicationRecord
   
   has_many:courses
   has_many:lectures
+  has_many:comments
 
   mount_uploader :image, ImageUploader
 

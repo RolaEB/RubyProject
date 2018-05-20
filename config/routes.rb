@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  resources :comments
   mount Ckeditor::Engine => '/ckeditor'
   resources :lectures do
-  member do
-    put "like", to: "lectures#upvote"
-    put "dislike", to: "lectures#downvote"
+    resources :comments
+    member do
+     put "like", to: "lectures#upvote"
+     put "dislike", to: "lectures#downvote"
     end
   end
 

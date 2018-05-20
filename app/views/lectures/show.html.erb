@@ -1,6 +1,8 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <p>
+  </br></br>
   <strong>Title:</strong>
   <%= @lecture.title %>
 </p>
@@ -29,7 +31,33 @@
   <%= @lecture.get_downvotes.size %>
 <% end %>
 </br>
+</br>
+</br>
+<div>
+<strong>Comments:</strong>
 
+<%= form_for([@lecture, @lecture.comments.build]) do |f| %>
+  
+  <p>
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+    
+  </p>
+  <p>
+    <%= f.submit "Create Comment", :id => "save-button" %>
+  </p>
+<% end %>
+</div>
+</br>
+</br>
+<% @lecture.comments.each do |comment| %>
+  
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.content %>
+  </p>
+<% end %>
 
-<%= link_to 'Edit', edit_lecture_path(@lecture) %> |
+<%= link_to 'Edit', edit_lecture_path(@lecture) if current_user=@lecture.user_id%> |
 <%= link_to 'Back', lectures_path %>
+</div>
