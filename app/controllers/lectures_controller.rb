@@ -13,5 +13,16 @@ class LecturesController < InheritedResources::Base
     redirect_to lectures_path
    end
    
+   def upvote 
+    @lec = Lecture.find(params[:id])
+    @lec.upvote_by current_user
+    redirect_back(fallback_location: lectures_path)
+  end  
+
+  def downvote
+    @lec = Lecture.find(params[:id])
+    @lec.downvote_by current_user
+    redirect_back(fallback_location: lectures_path)
+  end
 end
 

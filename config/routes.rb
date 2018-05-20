@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
-  resources :lectures
+  resources :lectures do
+  member do
+    put "like", to: "lectures#upvote"
+    put "dislike", to: "lectures#downvote"
+    end
+  end
+
   resources :courses
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
